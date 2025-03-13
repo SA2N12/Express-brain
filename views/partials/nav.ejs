@@ -3,14 +3,20 @@
         <div class="flex items-center space-x-8">
             <a href="/"><p class="text-white font-bold text-xl">Express-brain</p></a>
             <a href="/jouer"><p class="text-gray-300 hover:text-white cursor-pointer transition">Jouer</p></a>
-            <p class="text-gray-300 hover:text-white cursor-pointer transition">Classement</p>
-            <p class="text-gray-300 hover:text-white cursor-pointer transition">Equipe</p>
+            <a href="/classement"><p class="text-gray-300 hover:text-white cursor-pointer transition">Classement</p></a>
+            <a href="/equipe"><p class="text-gray-300 hover:text-white cursor-pointer transition">Equipe</p></a>
+            <% if (user && user.admin === 'admin') { %>
+                <a href="/admin/utilisateurs"><p class="text-gray-300 hover:text-white cursor-pointer transition">Utilisateurs</p></a>
+            <% } %>
         </div>
         <div class="flex items-center space-x-4">
-            <a href="/connexion"><p class="text-gray-300 hover:text-white cursor-pointer transition">Connexion</p></a>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
+            <% if (user) { %>
+                <span class="text-gray-300 mr-4"><%= user.name %></span>
+                <a href="/deconnexion" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Déconnexion</a>
+            <% } else { %>
+                <a href="/connexion" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Connexion</a>
+                <a href="/inscription" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium ml-4">Inscription</a>
+            <% } %>
         </div>
     </div>
 </nav>
