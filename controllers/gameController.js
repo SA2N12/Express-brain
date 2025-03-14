@@ -59,7 +59,7 @@ exports.postGame = [
 
                 const user = await User.findById(req.session.user._id);
 
-                if (user.highscore == null || user.highscore < game.tries) {
+                if (user.highscore == null || user.highscore > game.tries) {
                     user.highscore = game.tries;
                     await user.save();
                 }
